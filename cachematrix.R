@@ -22,7 +22,7 @@
 ## run the calculation again.
 
 ## This version caches a single matrix and its inverse.  A potential future
-## enhancement could be to build a FIFO queue (presumably with a configurable
+## enhancement could be to build a LRU queue (presumably with a configurable
 ## depth) so that more than one matrix and its inverse could be cached.
 
 
