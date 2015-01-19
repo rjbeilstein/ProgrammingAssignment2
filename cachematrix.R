@@ -21,9 +21,9 @@
 ## calculation, subsequent calls for inverting the same matrix should not need to
 ## run the calculation again.
 
-## This version caches a single matrix and its inverse.  A potential future
-## enhancement could be to build a LRU queue (presumably with a configurable
-## depth) so that more than one matrix and its inverse could be cached.
+## This version returns a function object which caches a single matrix 
+## and its inverse.  While it is certainly possible to return a general-purpose
+## function that could cache multiple different 
 
 
 ## Write a short comment describing this function
