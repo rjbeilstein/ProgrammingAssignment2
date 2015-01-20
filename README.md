@@ -52,6 +52,7 @@ function.
 
     cachemean <- function(x, ...) {
             m <- x$getmean()
+            if (!exists("dots",inherit=FALSE) |  
             if(!is.null(m)) {
                     message("getting cached data")
                     return(m)
