@@ -58,24 +58,24 @@
 ##
 
 makeCacheMatrix <- function(x = matrix()) {
-	inv<-NULL;											# No saved inverse yet
-	dots<-NULL											# or optional parameters
-	set <- function(y) {								# save new matrix value
-		x <<- y
-		inv <<- NULL									# and clear saved inverse
-		dots<<-NULL										# and optionals
-	}
-	get <- function() x									# get matrix value
-	setInverse <- function(inverse) inv <<- inverse		# remember computed inverse
-	getInverse <- function() inv						# get saved inverse
-	setDots <- function(optargs) dots <<- optargs		# remember optional args
-	getDots <- function() dots							# return same
-	list(set = set, get = get,							# return functions as a list
-			setInverse = setInverse,
-			getInverse = getInverse,
-			setDots = setDots,
-			getDots = getDots)
-	
+    inv<-NULL;											# No saved inverse yet
+    dots<-NULL											# or optional parameters
+    set <- function(y) {								# save new matrix value
+        x <<- y
+        inv <<- NULL									# and clear saved inverse
+        dots<<-NULL										# and optionals
+    }
+    get <- function() x									# get matrix value
+    setInverse <- function(inverse) inv <<- inverse		# remember computed inverse
+    getInverse <- function() inv						# get saved inverse
+    setDots <- function(optargs) dots <<- optargs		# remember optional args
+    getDots <- function() dots							# return same
+    list(set = set, get = get,							# return functions as a list
+            setInverse = setInverse,
+            getInverse = getInverse,
+            setDots = setDots,
+            getDots = getDots)
+    
 }
 
 
@@ -93,16 +93,16 @@ makeCacheMatrix <- function(x = matrix()) {
 ##
 
 cacheSolve <- function(x, ...) {
-	## Return a matrix that is the inverse of 'x'
-	inv<-x$getInverse()								# get the cached inverse
-	dots<-x$getDots()								# and remembered optional args
-	if(!is.null(inv) & identical(dots,list(...))) {	# if we have inverse and
-		message("getting cached data")				# optional args haven't changed
-		return(inv)									# return it
-	}
-	x$setDots(list(...))							# save optional arguments
-	data<-x$get()									# get original matrix
-	inv<-solve(data,...)							# compute the inverse
-	x$setInverse(inv)								# remember result of solve()
-	inv												# and return it
+    ## Return a matrix that is the inverse of 'x'
+    inv<-x$getInverse()								# get the cached inverse
+    dots<-x$getDots()								# and remembered optional args
+    if(!is.null(inv) & identical(dots,list(...))) {	# if we have inverse and
+        message("getting cached data")				# optional args haven't changed
+        return(inv)									# return it
+    }
+    x$setDots(list(...))							# save optional arguments
+    data<-x$get()									# get original matrix
+    inv<-solve(data,...)							# compute the inverse
+    x$setInverse(inv)								# remember result of solve()
+    inv												# and return it
 }
